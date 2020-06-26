@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: podxx1
+  name: podxx1
+spec:
+  imagePullSecrets:
+  - name: azure  #  name of  secret this will be used by worker node to pull docker image 
+  containers:
+  - image: ciscoindia.azurecr.io/nginx:junev1
+    name: podxx1
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

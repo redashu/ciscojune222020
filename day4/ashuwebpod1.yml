@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:   #  info about whatever we want to deploy
+  creationTimestamp: null
+  labels:   #  tag  given to a pod that is must 
+   run: ashuwebpod1  #  key : value pair  format data called label 
+  name: ashuwebpod1  # name of pod 
+spec:
+  containers:
+  - image: nginx  # docker image 
+    name: ashuwebpod1  #  name of container 
+    ports:
+    - containerPort: 80  #  this will be same as application port configured in Dockerfile under expose keyword
+    resources: {}   #  we can limit resources to pod
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always    # if nodes goes down and come up again the pod will be restarted 
+status: {}

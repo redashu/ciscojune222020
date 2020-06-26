@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service  #  we are requesting  for  service deployment 
+metadata:
+  creationTimestamp: null 
+  labels:   #  label of  service  as of now  there is no use of service label 
+    app: ashus1  #  this entire label part can be ignored 
+  name: ashus1  #  name  of service 
+spec:
+  ports:
+  - name: myport
+    port: 1111   # port  that will be bounded with service  IP 
+    protocol: TCP   #  optional field 
+    targetPort: 80   #  on what port number service  will forward  traffic  to pod 
+  selector:  #  this is for searching  pod on behalf of labels
+   run: ashuwebpod1  #  this is the label of pod where app is running 
+  type: NodePort   #  type  of Service  we  want to create 

@@ -1,0 +1,4 @@
+FROM  httpd
+maintainer  ashutoshh@linux.com
+workdir  /var/www/html
+copy  web1  .

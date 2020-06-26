@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysplunk
+  name: mysplunk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysplunk
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mysplunk
+    spec:
+      containers:
+      - image: splunk/splunk
+        name: splunk
+        ports:
+        - containerPort: 8000
+        env:
+        - name: SPLUNK_START_ARGS
+          valueFrom:
+           configMapKeyRef:
+            name: splunkcm  #  name of configmap 
+            key: lc    #  key of configmap 
+        - name: SPLUNK_PASSWORD
+          valueFrom:
+           configMapKeyRef:
+            name: splunkcm  #  name of configmap 
+            key: password   #  key of configmap 
+        resources: {}
+status: {}

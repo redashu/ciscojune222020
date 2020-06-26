@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: ashurc1    #  this is the name  of  replication controller 
+
+spec:
+ replicas: 5   #  no of pods we want  to be live everytime
+ template: 
+  metadata:   #  info about whatever we want to deploy
+   name: ashupod11   #  name of pod that is optional
+   labels:
+    x: hellocisco1
+  spec:
+   containers:
+   - image: nginx
+     name: ashuc1
+     ports:
+     - containerPort: 80
+

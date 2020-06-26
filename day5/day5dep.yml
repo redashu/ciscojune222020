@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ashujune2020    #  my personal namespace 
+  creationTimestamp: null
+  labels:
+    app: ashuday5dep
+  name: ashuday5dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ashuday5dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ashuday5dep
+    spec:
+      containers:
+      - image: dockerashu/ciscohttpd:june2020v1
+        name: ciscohttpd
+        env:
+         - name: x  #  varaible defined in dockerfile
+           valueFrom:
+            configMapKeyRef:
+             name: ashucm1   #  name of  configMap 
+             key: w   #  this w is defined in key section of configmap 

@@ -1,0 +1,11 @@
+apiVersion: v1   #  kubernetes apiversion for master 
+kind: Pod   #  requesting  k8s master to deploy pod 
+metadata:    # more info about pod 
+ name: ashupod111   #  name of  pod 
+ labels:   #  we are assigning   a tag to pod
+  x: ashupodweb       #  label must be in key : value pair
+
+spec: 
+ containers:
+ - name: ashuc1   #  name of first  / primary container 
+   image: nginx  #  docker image for container this image must be present on Docker Hub
